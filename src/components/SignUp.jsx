@@ -53,14 +53,11 @@ const SignUp = ({ open, setOpen }) => {
         method: "POST",
       });
 
-      if (res?.status === "falied") {
+      if (res?.status === "failed") {
         setErrMsg(res?.message);
       } else {
-        if (register) {
+        if (!register) {
           setErrMsg(res?.message);
-          setInterval(() => {
-            window.location.replace("/");
-          }, 5000);
         } else {
           setErrMsg("");
           const newData = { token: res?.token, ...res?.user };

@@ -7,7 +7,7 @@ import { AiOutlineMail } from "react-icons/ai";
 import { FiPhoneCall } from "react-icons/fi";
 import { CustomButton, Loading, TextInput } from "../components";
 import { NoProfile } from "../assets";
-import { apiRequest, handleFileUpload } from "../utils";
+import { apiRequest, handleFileUpload} from "../utils";
 import { Login } from "../redux/userSlice";
 import { MdTroubleshoot } from "react-icons/md";
 
@@ -41,7 +41,7 @@ const UserForm = ({ open, setOpen }) => {
         data: newData,
         method: "PUT",
       });
-
+      console.log(uri, res)
       if (res) {
         const newData = { token: res?.token, ...res?.user };
         dispatch(Login(newData));
