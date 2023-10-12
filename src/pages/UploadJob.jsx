@@ -34,7 +34,6 @@ const UploadJob = () => {
 
     console.log(user?.profileUrl);
     if (
-      !user?.profileUrl ||
       !user?.about ||
       !user?.contact ||
       !user?.location

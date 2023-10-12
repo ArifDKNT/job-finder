@@ -27,6 +27,7 @@ const UserForm = ({ open, setOpen }) => {
   const [profileImage, setProfileImage] = useState("");
   const [uploadCv, setUploadCv] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const closeModal = () => setOpen(false);
 
   const onSubmit = async (data) => {
     setIsSubmitting(MdTroubleshoot);
@@ -46,7 +47,7 @@ const UserForm = ({ open, setOpen }) => {
         const newData = { token: res?.token, ...res?.user };
         dispatch(Login(newData));
         localStorage.setItem("userInfo", JSON.stringify(res));
-        window.location.reload();
+        closeModal();
       }
       setIsSubmitting(false);
     } catch (error) {
@@ -55,7 +56,6 @@ const UserForm = ({ open, setOpen }) => {
     }
   };
 
-  const closeModal = () => setOpen(false);
 
   return (
     <>

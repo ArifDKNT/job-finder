@@ -37,7 +37,7 @@ const CompnayForm = ({ open, setOpen }) => {
     const uri = profileImage && (await handleFileUpload(profileImage));
 
     const newData = uri ? { ...data, profileUrl: uri } : data;
-
+    console.log("uri",uri);
     try {
       const res = await apiRequest({
         url: "/companies/update-company",
@@ -54,7 +54,6 @@ const CompnayForm = ({ open, setOpen }) => {
         const newData = { token: res?.token, ...res?.user };
         dispatch(Login(newData));
         localStorage.setItem("userInfo", JSON.stringify(data));
-
         setTimeout(() => {
           window.location.reload();
         }, 1500);
@@ -219,7 +218,6 @@ const CompanyProfile = () => {
         url: "/companies/get-company/" + id,
         method: "GET",
       });
-
       setInfo(res?.data);
       setIsLoading(false);
     } catch (error) {
@@ -236,7 +234,6 @@ const CompanyProfile = () => {
   if (isLoading) {
     return <Loading />;
   }
-
   return (
     <div className='container mx-auto p-5'>
       <div className=''>

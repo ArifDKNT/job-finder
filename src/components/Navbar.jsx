@@ -110,6 +110,7 @@ const Navbar = () => {
     setIsOpen((prev) => !prev);
   };
 
+  console.log(user?.accountType);
   return (
     <>
       <div className='relative bg-[#f7fdfd] z-50'>
